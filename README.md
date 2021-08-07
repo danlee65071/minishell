@@ -7,7 +7,7 @@ readline читает строку из терминала и вернет ее,
 Очищает список истории, удалив все записи, таким же образом, как функция clear_history () библиотеки истории. Это отличается от clear_history тем, что освобождает личные данные, которые readline сохраняет в списке истории. Необходимые библиотеки: <stdio.h>, <readline/readline.h>, <readline/history.h>.
 ### int rl_on_new_line (void)
 Сообщает функциям обновления, что мы переместились на новую (пустую) строку, обычно после вывода новой строки. Необходимые библиотеки: <stdio.h>, <readline/readline.h>, <readline/history.h>.
-
-
+### void rl_replace_line (const char \*text, int clear_undo)
+Заменяет содержимое rl_line_buffer текстом text. По возможности точка и отметка сохраняются. Если clear_undo отличен от нуля, список отмены, связанный с текущей строкой, очищается. Необходимые библиотеки: <stdio.h>, <readline/readline.h>, <readline/history.h>. **Переменная char \*rl_line_buffer** - это строка, в которой содержится вся предыдущая информация, собранная до сих пор.
 
 The objective of this project is for you to create a simple shell.
