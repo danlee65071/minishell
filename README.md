@@ -21,7 +21,10 @@ readline читает строку из терминала и вернет ее,
 ### void rl_redisplay(void)
 Отображает на экране содержимое переменной rl_line_buffer. Необходимые библиотеки: <stdio.h>, <readline/readline.h>, <readline/history.h>.  
 
-### void add_history (const char *string) 
+### void add_history (const char \*string) 
 Помещает строку в конец списка истории. Связанное поле данных (если есть) установлено в NULL.
+
+### int printf(const char \*format, ...)
+Выводит данные в соответствии с параметром format. При успешном завершении работы эти функции возвращают количество напечатанных символов (не включая завершающий '\0', использующийся для обозначения конца строки данных). Если случилась ошибка вывода, то возвратится отрицательное значение.
 
 The objective of this project is for you to create a simple shell.
