@@ -106,7 +106,7 @@ wait() блокирует родительский процесс до тех п
 Системный вызов stat() читает информацию о файле с именем FNAME и записы- вает эту информацию в структуру stat по адресу STATISTICS.  
 struct stat
 {  
-\tmode_t st_mode;  
+   mode_t st_mode;  
 >uid_t st_uid;  
 >gid_t st_gid;  
 >off_t st_size;  
