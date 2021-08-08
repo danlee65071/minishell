@@ -3,11 +3,12 @@
 
 # Содержание
 1. [Описание разрешенных функций](#funcs_description)
+  1. [readline](#readline_func)
 
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
 
-### char \*readline(const char \*prompt)
+### char \*readline(const char \*prompt) <a name = "readline_func"></a>
 readline читает строку из терминала и вернет ее, используя prompt в качестве подсказки. Если prompt является NULL или пустой строкой, подсказка не выводится. Возвращенная строка выделяется с помощью malloc, вызывающий должен освободить его по завершении. В возвращаемой строке окончательный символ новой строки удален, поэтому остается только текст строки.
 
 ### void rl_clear_history(void)
