@@ -112,7 +112,7 @@ struct stat
    off_t st_size;  
    time_t st_atime;  
    time_t st_mtime;    
-};
+};  
 Перечислим назначение полей структуры stat:
 * st_mode — это режим файла;
 * st_uid — это числовой идентификатор владельца файла;
