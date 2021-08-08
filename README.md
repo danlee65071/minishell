@@ -1,9 +1,8 @@
 # minishell
-Цель этого проекта - создать простую оболочку.
 
 # Содержание
 1. [Описание разрешенных функций](#funcs_description)
-    1. [readline](#readline_func)
+  1. [readline](#readline_func)
 
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
@@ -73,4 +72,3 @@ wait() блокирует родительский процесс до тех п
 ### int kill (pid_t PID, int SIGNAL)
 Этот системный вызов посылает процессу с идентификатором PID сигнал SIGNAL. Возвращаемое значение: 0 (при успешном завершении) или –1 (в случае ошибки).
 
-The objective of this project is for you to create a simple shell.
