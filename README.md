@@ -43,6 +43,7 @@
     * [tgetflag](#tgetflag)
     * [tgetnum](#tgetnum)
     * [tgetstr](#tgetstr)
+    * [tgoto](#tgoto)
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
 
@@ -207,3 +208,6 @@ tgetent пoмeщaeт в бyфep bp инфopмaцию o тepминaлe name. Он
 
 ### char \*tgetstr(char \*name, char \*\*area) <a name = "tgetstr"></a>
 Получение строкового свойства. Возвращает указатель на строку или NULL в случае отсутствия. В GNU-версии, если area есть NULL, termcap выделит память сам. termcap больше не позаботится об этом указателе, если вы не освободите name перед выходом из программы. Такой метод предпочтителен, поскольку вы не знаете сколько памяти потребуется для указателя, поэтому позвольте termcap сделать все за вас.
+
+### char \*tgoto(const char \*cap, int col, int row) <a name = "tgoto"></a>
+Подпрограмма tgoto преобразует параметры в заданную возможность. Вывод этой процедуры должен быть передан tputs.
