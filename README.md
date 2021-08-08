@@ -102,8 +102,9 @@ wait() блокирует родительский процесс до тех п
 ### int chdir (const char \*PATH) <a name = "chdir"></a>
 Смена текущего каталога. Системный вызов chdir() изменяет текущий каталог, используя его имя (путь). При успешном завершении функция возвращает 0 и -1, если произошла ошибка.
 
-### int stat (const char \*FNAME, struct stat \*STATISTICS) <a name = "stat"><\a>
-Системный вызов stat() читает информацию о файле с именем FNAME и записы- вает эту информацию в структуру stat по адресу STATISTICS.  
+### int stat (const char \*FNAME, struct stat \*STATISTICS) <a name = "stat"></a>
+Системный вызов stat() читает информацию о файле с именем FNAME и записывает эту информацию в структуру stat по адресу STATISTICS.  
+  
 struct stat  
 {  
    mode_t st_mode;  
@@ -113,6 +114,7 @@ struct stat
    time_t st_atime;  
    time_t st_mtime;    
 };  
+  
 Перечислим назначение полей структуры stat:
 * st_mode — это режим файла;
 * st_uid — это числовой идентификатор владельца файла;
