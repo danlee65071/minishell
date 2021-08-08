@@ -2,7 +2,7 @@
 
 # Содержание
 1. [Описание разрешенных функций](#funcs_description)
-  * [readline](#readline_func)
+    * [readline](#readline_func)
 
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
