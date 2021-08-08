@@ -27,6 +27,7 @@
     * [unlink](#unlink)
     * [execve](#execve)
     * [dup и dup2](#dup)
+    * [pipe](#pipe)
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
 
