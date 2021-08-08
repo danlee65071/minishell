@@ -25,6 +25,7 @@
     * [chdir](#chdir)
     * [stat, fstat и lstat](#stat)
     * [unlink](#unlink)
+    * [execve](#execve)
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
 
@@ -103,7 +104,7 @@ wait() блокирует родительский процесс до тех п
 ### int chdir (const char \*PATH) <a name = "chdir"></a>
 Смена текущего каталога. Системный вызов chdir() изменяет текущий каталог, используя его имя (путь). При успешном завершении функция возвращает 0 и -1, если произошла ошибка.
 
-### int stat (const char \*FNAME, struct stat \*STATISTICS), int fstat (int FD, struct stat * STATISTICS) и int lstat (const char * FNAME, struct stat * STATISTICS) <a name = "stat"></a>
+### int stat (const char \*FNAME, struct stat \*STATISTICS), int fstat (int FD, struct stat \*STATISTICS) и int lstat (const char \*FNAME, struct stat \*STATISTICS) <a name = "stat"></a>
 Системный вызов stat() читает информацию о файле с именем FNAME и записывает эту информацию в структуру stat по адресу STATISTICS. Вызов fstat() также читает информацию о файле, который представлен дескриптором FD. И, наконец, lstat() работает аналогично stat(). Но при обнаружении символической ссылки lstat() читает информацию о ней, а не о файле, на который эта ссылка указывает. stat() и lstat() поразному интерпретируют символические ссылки, но ведут себя одинаково по отношению к другим типам файлов. Все системные вызовы семейства stat() возвращают 0 при успешном завершении. В случае ошибки возвращается –1.  
   
 struct stat  
@@ -124,7 +125,7 @@ struct stat
 * st_atime — содержит дату и время последнего обращения к файлу;
 * st_mtime — содержит дату и время последней модификации файла.
    
-### int unlink (const char * FNAME) <a name = "unlink"></a>
+### int unlink (const char \*FNAME) <a name = "unlink"></a>
 Удаление файла. Аргумент FNAME — это имя удаляемого файла. unlink() возвращает 0 при успешном завершении. В случае ошибки возвращается –1.
 
-
+### int execve (const char \*PATH, const char \**ARGV, const char \**ENVP) <a name = "execve"></a>
