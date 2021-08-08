@@ -104,13 +104,12 @@ wait() блокирует родительский процесс до тех п
 
 ### int stat (const char \*FNAME, struct stat \*STATISTICS) <a name = "stat"><\a>
 Системный вызов stat() читает информацию о файле с именем FNAME и записы- вает эту информацию в структуру stat по адресу STATISTICS.  
-struct stat
+struct stat  
 {  
    mode_t st_mode;  
->uid_t st_uid;  
->gid_t st_gid;  
->off_t st_size;  
->time_t st_atime;  
->time_t st_mtime;  
-   
+   uid_t st_uid;  
+   gid_t st_gid;  
+   off_t st_size;  
+   time_t st_atime;  
+   time_t st_mtime;    
 };
