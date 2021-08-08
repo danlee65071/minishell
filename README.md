@@ -24,6 +24,7 @@
     * [getcwd](#getcwd)
     * [chdir](#chdir)
     * [stat, fstat и lstat](#stat)
+    * [unlink](#unlink)
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
 
@@ -123,3 +124,7 @@ struct stat
 * st_atime — содержит дату и время последнего обращения к файлу;
 * st_mtime — содержит дату и время последней модификации файла.
    
+### int unlink (const char * FNAME) <a name = "unlink"></a>
+Удаление файла. Аргумент FNAME — это имя удаляемого файла. unlink() возвращает 0 при успешном завершении. В случае ошибки возвращается –1.
+
+
