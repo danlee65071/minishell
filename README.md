@@ -44,6 +44,7 @@
     * [tgetnum](#tgetnum)
     * [tgetstr](#tgetstr)
     * [tgoto](#tgoto)
+    * [tputs](#tputs)
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
 
@@ -211,3 +212,6 @@ tgetent пoмeщaeт в бyфep bp инфopмaцию o тepминaлe name. Он
 
 ### char \*tgoto(const char \*cap, int col, int row) <a name = "tgoto"></a>
 Подпрограмма tgoto преобразует параметры в заданную возможность. Вывод этой процедуры должен быть передан tputs.
+
+### int tputs(const char \*str, int affcnt, int (\*putc)(int)) <a name = "tputs"></a>
+Подпрограмма tputs применяет информацию о заполнении к строке str и выводит ее. Строка должна быть строковой переменной terminfo или возвращаемым значением из tparm, tgetstr или tgoto. affcnt - это количество затронутых строк или 1, если не применимо. putc - это процедура, подобная putchar, в которую передаются символы по одному.
