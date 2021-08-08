@@ -33,6 +33,7 @@
     * [strerror](#strerror)
     * [errno](#errno)
     * [isatty](#isatty)
+    * [ttyname](#ttyname)
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
 
