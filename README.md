@@ -45,6 +45,7 @@
     * [tgetstr](#tgetstr)
     * [tgoto](#tgoto)
     * [tputs](#tputs)
+2. [Необходимые библиотеки](#includes)
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
 
