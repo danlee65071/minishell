@@ -215,3 +215,21 @@ tgetent пoмeщaeт в бyфep bp инфopмaцию o тepминaлe name. Он
 
 ### int tputs(const char \*str, int affcnt, int (\*putc)(int)) <a name = "tputs"></a>
 Подпрограмма tputs применяет информацию о заполнении к строке str и выводит ее. Строка должна быть строковой переменной terminfo или возвращаемым значением из tparm, tgetstr или tgoto. affcnt - это количество затронутых строк или 1, если не применимо. putc - это процедура, подобная putchar, в которую передаются символы по одному.
+
+## Необходимые библиотеки <a name = "includes"></a>
+# include <stdio.h>  
+# include <readline/readline.h>  
+# include <readline/history.h>  
+# include <stdlib.h>  
+# include <fcntl.h>  
+# include <unistd.h>  
+# include <sys/wait.h>  
+# include <signal.h>  
+# include <sys/stat.h>  
+# include <dirent.h>  
+# include <string.h>  
+# include <errno.h>  
+# include <sys/ioctl.h>  
+# include <termios.h>  
+# include <curses.h>  
+# include <term.h>  
