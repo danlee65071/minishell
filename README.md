@@ -46,7 +46,8 @@
     * [tgoto](#tgoto)
     * [tputs](#tputs)
 2. [Необходимые библиотеки](#includes)
-3. [Реализация комманд](#commands_realization)
+3. [Структура t_env](#t_env)
+4. [Реализация комманд](#commands_realization)
     * [Комманда echo c флагом -n](#echo)
 
 ## Описание разрешенных функций <a name = "funcs_description"></a>
@@ -236,6 +237,8 @@ tgetent пoмeщaeт в бyфep bp инфopмaцию o тepминaлe name. Он
 \# include <termios.h>  
 \# include <curses.h>  
 \# include <term.h>  
+
+## Структура t_env <a name = "t_env"></a>
 
 ## Реализация комманд <a name = "commands_realization"></a>
 
