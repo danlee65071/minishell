@@ -57,10 +57,14 @@ static int	is_dir_or_file(t_my_env **my_env, char **params, int *status)
 		return (0);
 	absolute_path = get_absolute_path(params[0]);
 	if (stat(absolute_path, &file_stat) == -1)
+	{
+		free(absolute_path);
 		return (0);
+	}
 	if (S_ISDIR(file_stat.st_mode) || S_ISREG(file_stat.st_mode))
 	{
 		proc_is_dir(my_env, params, status, file_stat);
+		free(absolute_path);
 		return (1);
 	}
 	if (slash_ptr != NULL)
@@ -69,6 +73,7 @@ static int	is_dir_or_file(t_my_env **my_env, char **params, int *status)
 		ft_putstr_fd(params[0], 2);
 		ft_putstr_fd("\n", 2);
 		*status = 1;
+		free(absolute_path);
 		return (1);
 	}
 	free(absolute_path);
@@ -78,9 +83,8 @@ static int	is_dir_or_file(t_my_env **my_env, char **params, int *status)
 static int	choose_program(t_my_env **my_env, char **params, int *is_exit,
 				char *program_path)
 {
-	int	status;
+	static int	status;
 
-	status = 0;
 	if (ft_strncmp(params[0], "echo", 5) == 0)
 		status = my_echo(params);
 	else if (ft_strncmp(params[0], "cd", 3) == 0)

@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **env)
 		minishell.old_std_in = dup(STDIN_FILENO);
 		minishell.input_str = readline("minishell: ");
 		if (minishell.input_str == NULL)
-			printf("\b\b  \b\n");
+			printf("\b\bexit\n");
 		if (minishell.input_str == NULL)
 			break ;
 		loop_routine(&minishell);
@@ -39,7 +39,7 @@ int	main(int argc, char **argv, char **env)
 	free_my_env(&(minishell.my_env));
 	clear_history();
 	tcsetattr(STDIN_FILENO, TCSANOW, &minishell.old_term);
-	return (minishell.status);
+	return (minishell.status % 255);
 }
 
 static void	process_signals(int signal)
@@ -78,6 +78,7 @@ static void	minishell_init(int argc, char **argv, char **env,
 		}
 		head = head->next;
 	}
+	minishell->input_str = NULL;
 }
 
 static void	loop_routine(t_minishell *minishell)

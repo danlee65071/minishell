@@ -26,5 +26,5 @@ int	builtin_program_exec(t_my_env *my_env, char **params,
 		execve(program_path, params, str_env);
 	}
 	waitpid(program_pid, &status, 0);
-	return (status);
+	return (status % 255);
 }

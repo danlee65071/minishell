@@ -21,7 +21,7 @@ int	my_exit(int status, char **params, int *is_exit)
 	if (qnty_params > 2)
 	{
 		ft_putstr_fd("exit: too many arguments\n", 2);
-		return (0);
+		return (1);
 	}
 	*is_exit = 1;
 	if (qnty_params == 2)
@@ -29,5 +29,6 @@ int	my_exit(int status, char **params, int *is_exit)
 		exit_status = ft_atoi(params[1]);
 		return (exit_status);
 	}
+	printf("exit\n");
 	return (status);
 }

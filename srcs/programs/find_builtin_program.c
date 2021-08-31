@@ -15,7 +15,6 @@
 static void	init_params(t_my_env *my_env, t_pr *pr);
 static void	get_program_path(char *program_name, t_pr *pr);
 static void	end_loop(t_pr *pr);
-static char	*file_check(t_pr *pr, char *program_name);
 
 char	*find_builtin_program(t_my_env *my_env, char *program_name)
 {
@@ -32,8 +31,15 @@ char	*find_builtin_program(t_my_env *my_env, char *program_name)
 		pr.file = readdir(pr.dir);
 		while (pr.file != NULL)
 		{
-			if (file_check(&pr, program_name) != NULL)
-				return (file_check(&pr, program_name));
+			if (ft_strncmp(pr.file->d_name, program_name,
+						   ft_strlen(program_name) + 1) == 0)
+			{
+				get_program_path(program_name, &pr);
+				free_arr_of_str(&(pr.programs_dirs));
+				closedir(pr.dir);
+				return (pr.program_path);
+			}
+			pr.file = readdir(pr.dir);
 		}
 		end_loop(&pr);
 	}
@@ -56,7 +62,6 @@ static void	get_program_path(char *program_name, t_pr *pr)
 	pr->tmp_str = pr->program_path;
 	pr->program_path = ft_strjoin(pr->program_path, program_name);
 	free(pr->tmp_str);
-	closedir(pr->dir);
 }
 
 static void	end_loop(t_pr *pr)
@@ -64,17 +69,4 @@ static void	end_loop(t_pr *pr)
 	if (closedir(pr->dir) == -1)
 		error_message();
 	pr->i++;
-}
-
-static char	*file_check(t_pr *pr, char *program_name)
-{
-	if (ft_strncmp(pr->file->d_name, program_name,
-			ft_strlen(program_name) + 1) == 0)
-	{
-		get_program_path(program_name, pr);
-		free_arr_of_str(&(pr->programs_dirs));
-		return (pr->program_path);
-	}
-	pr->file = readdir(pr->dir);
-	return (NULL);
 }
