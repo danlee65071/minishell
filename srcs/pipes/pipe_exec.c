@@ -39,6 +39,7 @@ int	pipe_exec(t_my_env *my_env, char **params, int *is_exit)
 	if (pipes.programs_pid == NULL)
 		error_message();
 	end_pipe_exec(my_env, params, pipes, &status);
+	free(pipes.pipes_fd);
 	return (status);
 }
 
@@ -113,6 +114,7 @@ static void	end_pipe_exec(t_my_env *my_env, char **params, t_pipe pipes,
 		waitpid(pipes.programs_pid[pipes.i], status, 0);
 		pipes.i++;
 	}
+	free(pipes.programs_pid);
 }
 
 static int	program_exec(t_my_env *my_env, char **params)
@@ -140,5 +142,6 @@ static int	program_exec(t_my_env *my_env, char **params)
 		pr.str_env = my_env_to_str(my_env);
 		execve(pr.program_path, params, pr.str_env);
 	}
+	free(pr.program_path);
 	return (pr.status);
 }

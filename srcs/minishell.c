@@ -31,12 +31,12 @@ int	main(int argc, char **argv, char **env)
 		minishell.old_std_in = dup(STDIN_FILENO);
 		minishell.input_str = readline("minishell: ");
 		if (minishell.input_str == NULL)
-			printf("\b\b");
+			printf("\b\b  \b\n");
 		if (minishell.input_str == NULL)
 			break ;
 		loop_routine(&minishell);
 	}
-	free_my_env(&minishell.my_env);
+	free_my_env(&(minishell.my_env));
 	clear_history();
 	tcsetattr(STDIN_FILENO, TCSANOW, &minishell.old_term);
 	return (minishell.status);
@@ -54,6 +54,9 @@ static void	process_signals(int signal)
 static void	minishell_init(int argc, char **argv, char **env,
 				t_minishell *minishell)
 {
+	t_my_env	*head;
+	char		*tmp_str;
+
 	(void)argc;
 	(void)argv;
 	tcgetattr(STDIN_FILENO, &minishell->old_term);
@@ -63,6 +66,18 @@ static void	minishell_init(int argc, char **argv, char **env,
 	minishell->status = 0;
 	minishell->is_exit = 0;
 	minishell->my_env = init_my_env(env);
+	head = minishell->my_env;
+	while (head != NULL)
+	{
+		if (ft_strncmp(head->var_name, "SHLVL", 6) == 0)
+		{
+			tmp_str = head->var_value;
+			head->var_value = ft_itoa(ft_atoi(head->var_value) + 1);
+			free(tmp_str);
+			break ;
+		}
+		head = head->next;
+	}
 }
 
 static void	loop_routine(t_minishell *minishell)

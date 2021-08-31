@@ -21,11 +21,21 @@ void	here_doc_exec(char *limiter)
 	if (fd == -1)
 		error_message();
 	input_str = readline("heredoc> ");
-	while (ft_strncmp(input_str, limiter, ft_strlen(limiter) + 1) != 0)
+	while (input_str == NULL || ft_strncmp(input_str, limiter, ft_strlen
+			(limiter) + 1) != 0)
 	{
-		ft_putstr_fd(input_str, fd);
-		ft_putstr_fd("\n", fd);
-		input_str = readline("heredoc> ");
+		if (input_str != NULL)
+		{
+			ft_putstr_fd(input_str, fd);
+			ft_putstr_fd("\n", fd);
+			input_str = readline("heredoc> ");
+		}
+		else
+		{
+			printf("\b\b \b \b  \b\b");
+			printf("\b\b\b\b\b\b\b\b\b");
+			input_str = readline("heredoc> ");
+		}
 	}
 	close(fd);
 }

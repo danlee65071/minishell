@@ -30,7 +30,7 @@ DIRS += $(PARSER_DIR)
 
 PROGRAMS_SRCS = program_execution.c my_echo.c my_cd.c my_pwd.c my_export.c my_unset.c \
 				my_env.c my_exit.c find_builtin_program.c builtin_program_exec.c\
-				update_pwd_and_old_pwd.c sort_env.c
+				update_pwd_and_old_pwd.c sort_env.c bin_exec.c
 PROGRAMS_DIR = programs
 PROGRAMS_PATH = $(addprefix $(PROGRAMS_DIR)/, $(PROGRAMS_SRCS))
 SRCS += $(PROGRAMS_PATH)

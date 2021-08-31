@@ -124,5 +124,6 @@ void		init_buf(t_index *index, t_buf *buf);
 void		start_proc_dollar(t_my_env *my_env, char *str, t_index *index,
 				t_my_env *var_params);
 int			proc_dollar(t_my_env *var_params, t_index *index, t_buf *buf);
+int			bin_exec(t_my_env **my_env, char **params);
 
 #endif

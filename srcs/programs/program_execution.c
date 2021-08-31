@@ -56,7 +56,8 @@ static int	is_dir_or_file(t_my_env **my_env, char **params, int *status)
 	if (slash_ptr == NULL && qnty_str(params) > 1)
 		return (0);
 	absolute_path = get_absolute_path(params[0]);
-	stat(absolute_path, &file_stat);
+	if (stat(absolute_path, &file_stat) == -1)
+		return (0);
 	if (S_ISDIR(file_stat.st_mode) || S_ISREG(file_stat.st_mode))
 	{
 		proc_is_dir(my_env, params, status, file_stat);
@@ -94,6 +95,8 @@ static int	choose_program(t_my_env **my_env, char **params, int *is_exit,
 		status = my_environment(*my_env, params);
 	else if (ft_strncmp(params[0], "exit", 5) == 0)
 		status = my_exit(status, params, is_exit);
+	else if (params[0][0] == '.' && params[0][1] == '/')
+		status = bin_exec(my_env, params);
 	else if (program_path != NULL)
 		status = builtin_program_exec(*my_env, params, program_path);
 	else

@@ -14,11 +14,14 @@
 
 void	free_my_env(t_my_env **my_env)
 {
+	t_my_env	*tmp_env;
+
 	while (*my_env != NULL)
 	{
-		free((*my_env)->var_name);
-		free((*my_env)->var_value);
-		free((*my_env));
+		tmp_env = *my_env;
 		(*my_env) = (*my_env)->next;
+		free(tmp_env->var_name);
+		free(tmp_env->var_value);
+		free(tmp_env);
 	}
 }

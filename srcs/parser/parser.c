@@ -51,6 +51,7 @@ static char	*process_str(char *str, t_my_env *my_env, int status)
 	}
 	len_new_str = length_new_str(str);
 	new_str = end_process_str(my_env, str, len_new_str, status);
+	free(str);
 	return (new_str);
 }
 
