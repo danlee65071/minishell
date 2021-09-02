@@ -32,11 +32,9 @@ char	*find_builtin_program(t_my_env *my_env, char *program_name)
 		while (pr.file != NULL)
 		{
 			if (ft_strncmp(pr.file->d_name, program_name,
-						   ft_strlen(program_name) + 1) == 0)
+					ft_strlen(program_name) + 1) == 0)
 			{
 				get_program_path(program_name, &pr);
-				free_arr_of_str(&(pr.programs_dirs));
-				closedir(pr.dir);
 				return (pr.program_path);
 			}
 			pr.file = readdir(pr.dir);
@@ -62,6 +60,8 @@ static void	get_program_path(char *program_name, t_pr *pr)
 	pr->tmp_str = pr->program_path;
 	pr->program_path = ft_strjoin(pr->program_path, program_name);
 	free(pr->tmp_str);
+	free_arr_of_str(&(pr->programs_dirs));
+	closedir(pr->dir);
 }
 
 static void	end_loop(t_pr *pr)
@@ -69,4 +69,13 @@ static void	end_loop(t_pr *pr)
 	if (closedir(pr->dir) == -1)
 		error_message();
 	pr->i++;
+}
+
+void	process_slash_ptr(char **params, int *status, char **absolute_path)
+{
+	ft_putstr_fd("no such file or directory: ", 2);
+	ft_putstr_fd(params[0], 2);
+	ft_putstr_fd("\n", 2);
+	*status = 1;
+	free(*absolute_path);
 }

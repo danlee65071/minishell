@@ -68,14 +68,9 @@ static int	is_dir_or_file(t_my_env **my_env, char **params, int *status)
 		return (1);
 	}
 	if (slash_ptr != NULL)
-	{
-		ft_putstr_fd("no such file or directory: ", 2);
-		ft_putstr_fd(params[0], 2);
-		ft_putstr_fd("\n", 2);
-		*status = 1;
-		free(absolute_path);
+		process_slash_ptr(params, status, &absolute_path);
+	if (slash_ptr != NULL)
 		return (1);
-	}
 	free(absolute_path);
 	return (0);
 }

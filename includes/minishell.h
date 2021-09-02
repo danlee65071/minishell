@@ -100,6 +100,15 @@ typedef struct s_add
 	int			qnty_params;
 }	t_add;
 
+typedef struct s_bin
+{
+	char		**str_env;
+	pid_t		program_pid;
+	int			status;
+	char		*program_path;
+	struct stat	file_stat;
+}	t_bin;
+
 sigjmp_buf		g_ctrl_buf;
 
 int			program_execution(t_my_env **my_env, char **params, int *is_exit);
@@ -125,5 +134,6 @@ void		start_proc_dollar(t_my_env *my_env, char *str, t_index *index,
 				t_my_env *var_params);
 int			proc_dollar(t_my_env *var_params, t_index *index, t_buf *buf);
 int			bin_exec(t_my_env **my_env, char **params);
+void		process_slash_ptr(char **params, int *status, char **absolute_path);
 
 #endif
