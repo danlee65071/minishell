@@ -14,8 +14,8 @@
 # define MINISHELL_H
 
 # include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+# include "../readline/readline.h"
+# include "../readline/history.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
@@ -29,7 +29,6 @@
 # include <termios.h>
 # include <curses.h>
 # include <term.h>
-# include <setjmp.h>
 # include "libft.h"
 # include "my_env.h"
 # include "redirect.h"
@@ -108,8 +107,6 @@ typedef struct s_bin
 	char		*program_path;
 	struct stat	file_stat;
 }	t_bin;
-
-sigjmp_buf		g_ctrl_buf;
 
 int			program_execution(t_my_env **my_env, char **params, int *is_exit);
 int			my_echo(char **params);

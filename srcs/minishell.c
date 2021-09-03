@@ -25,8 +25,6 @@ int	main(int argc, char **argv, char **env)
 	signal(SIGINT, process_signals);
 	while (minishell.is_exit == 0)
 	{
-		while (sigsetjmp(g_ctrl_buf, 1) != 0)
-			;
 		minishell.old_std_out = dup(STDOUT_FILENO);
 		minishell.old_std_in = dup(STDIN_FILENO);
 		minishell.input_str = readline("minishell: ");
@@ -37,7 +35,7 @@ int	main(int argc, char **argv, char **env)
 		loop_routine(&minishell);
 	}
 	free_my_env(&(minishell.my_env));
-	clear_history();
+	rl_clear_history();
 	tcsetattr(STDIN_FILENO, TCSANOW, &minishell.old_term);
 	return (minishell.status % 255);
 }
@@ -46,8 +44,12 @@ static void	process_signals(int signal)
 {
 	if (signal == SIGINT)
 	{
-		printf("\n");
-		siglongjmp(g_ctrl_buf, 1);
+		rl_on_new_line();
+		rl_redisplay();
+		printf("  \n");
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
 	}
 }
 

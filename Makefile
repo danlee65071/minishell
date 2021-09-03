@@ -86,7 +86,7 @@ $(NAME): write_logo $(OBJS_PATH)
 	@make -sC $(LIBFT_DIR)
 	@cp $(LIBFT_DIR)/$(LIBFT) .
 	@echo "$(GREEN)\nLibft was compiled $(RESET)"
-	@$(CC) $(FLAGS) -I $(HEADERS_DIR) $(LIBFT) $(OBJS_PATH) -lreadline -o $@
+	@$(CC) $(FLAGS) -I $(HEADERS_DIR) $(LIBFT) $(OBJS_PATH) readline/libhistory.a readline/libreadline.a -ltermcap -o $@
 	@echo "$(GREEN)minishell was compiled $(RESET)"
 
 write_logo:

@@ -45,7 +45,7 @@ all:			$(NAME)
 
 $(NAME):		$(OBJS)
 				ar rcs $(NAME) $(OBJS)
-				@echo "$(GREEN)...........$(RESER)\c"
+				@echo "$(GREEN)............$(RESER)\c"
 
 clean:
 				$(RM) $(OBJS) $(BONUS_OBJS)
